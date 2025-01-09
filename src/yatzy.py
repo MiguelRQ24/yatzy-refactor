@@ -11,7 +11,10 @@ class Yatzy:
     @staticmethod
     def yatzy(*dices):
         return 50 if len(set(dices)) == 1 else 0
-
+    '''
+    Reduces la lista de dados eliminando las repeticiones de un mismo numero,
+    y si la longitud despues de eso es uno entonces son los 5 dados iguales y te da 50 puntos si no 0
+    '''
     @staticmethod
     def ones(d1, d2, d3, d4, d5):
         sum = 0
