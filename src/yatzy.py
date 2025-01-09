@@ -1,36 +1,26 @@
 class Yatzy:
 
     @staticmethod
-    def chance(*dices):
-        return sum(dices)
+    def chance(*dice):
+        return sum(dice)
     '''
     En vez de sumarlos uno a uno los sumamos a la vez
     con la funcion sum()
     '''
 
     @staticmethod
-    def yatzy(*dices):
-        return 50 if len(set(dices)) == 1 else 0
+    def yatzy(*dice):
+        return 50 if len(set(dice)) == 1 else 0
     '''
     Reduces la lista de dados eliminando las repeticiones de un mismo numero,
     y si la longitud despues de eso es uno entonces son los 5 dados iguales y te da 50 puntos si no 0
     '''
     @staticmethod
-    def ones(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1):
-            sum += 1
-
-        return sum
-
+    def ones(*dice):
+        return sum(1 for die in dice if die == 1)  
+    '''
+    Bucle para sumar unidad por cada resultado igual a 1
+    '''
     @staticmethod
     def twos(d1, d2, d3, d4, d5):
         sum = 0
