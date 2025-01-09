@@ -29,19 +29,12 @@ class Yatzy:
     '''  
 
     @staticmethod
-    def threes(d1, d2, d3, d4, d5):
-        s = 0
-        if (d1 == 3):
-            s += 3
-        if (d2 == 3):
-            s += 3
-        if (d3 == 3):
-            s += 3
-        if (d4 == 3):
-            s += 3
-        if (d5 == 3):
-            s += 3
-        return s
+    def threes(*dice):
+        return sum(3 for die in dice if die == 3)
+    '''
+    Bucle para sumar unidad por cada resultado igual a 3
+    '''  
+
 
     def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
         self.dice = [0] * 5
