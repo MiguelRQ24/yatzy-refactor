@@ -44,13 +44,11 @@ class Yatzy:
         self.dice[3] = d4
         self.dice[4] = _5
 
-    def fours(self):
-        sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4):
-                sum += 4
-        return sum
-
+    def fours(*dice):
+        return sum(4 for die in dice if die == 4)
+    '''
+    Bucle para sumar unidad por cada resultado igual a 4
+    '''  
     def fives(self):
         s = 0
         i = 0
