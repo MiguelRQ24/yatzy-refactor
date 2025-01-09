@@ -49,13 +49,11 @@ class Yatzy:
     '''
     Bucle para sumar unidad por cada resultado igual a 4
     '''  
-    def fives(self):
-        s = 0
-        i = 0
-        for i in range(len(self.dice)):
-            if (self.dice[i] == 5):
-                s = s + 5
-        return s
+    def fives(*dice):
+        return sum(5 for die in dice if die == 5)
+    '''
+    Bucle para sumar unidad por cada resultado igual a 5
+    ''' 
 
     def sixes(self):
         sum = 0
