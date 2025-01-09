@@ -22,19 +22,11 @@ class Yatzy:
     Bucle para sumar unidad por cada resultado igual a 1
     '''
     @staticmethod
-    def twos(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 2):
-            sum += 2
-        if (d2 == 2):
-            sum += 2
-        if (d3 == 2):
-            sum += 2
-        if (d4 == 2):
-            sum += 2
-        if (d5 == 2):
-            sum += 2
-        return sum
+    def twos(*dice):
+        return sum(2 for die in dice if die == 2)
+    '''
+    Bucle para sumar unidad por cada resultado igual a 2
+    '''  
 
     @staticmethod
     def threes(d1, d2, d3, d4, d5):
