@@ -66,18 +66,12 @@ class Yatzy:
     Bucle para sumar unidad por cada resultado igual a 6
     '''
 
-    def score_pair(self, d1, d2, d3, d4, d5):
-        counts = [0] * 6
-        counts[d1 - 1] += 1
-        counts[d2 - 1] += 1
-        counts[d3 - 1] += 1
-        counts[d4 - 1] += 1
-        counts[d5 - 1] += 1
-        at = 0
-        for at in range(6):
-            if (counts[6 - at - 1] == 2):
-                return (6 - at) * 2
-        return 0
+    def score_one_pair(*dice):
+        pairs_points = [0]
+        for die in dice:
+            if dice.count(die) > 1:
+                pairs_points.append(die * 2)
+        return max(pairs_points)
 
     @staticmethod
     def two_pair(d1, d2, d3, d4, d5):
