@@ -4,14 +4,6 @@ class Yatzy:
 
     FAIL = 0
     MAX_POINTS = 50
-
-    def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
-        self.dice = [0] * 5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
     
     @staticmethod
     def chance(*dice):
@@ -117,3 +109,4 @@ class Yatzy:
     @staticmethod
     def full_house(*dice):
         return sum(dice.count(die) * die for die in set(dice) if (dice.count(die) == 2 or dice.count(die) == 3) and len(set(dice)) == 2)
+    
