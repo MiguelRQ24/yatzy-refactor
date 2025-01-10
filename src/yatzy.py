@@ -107,13 +107,13 @@ class Yatzy:
         return Yatzy.FAIL
 
     @staticmethod
-    def smallStraight(*dice):
+    def small_straight(*dice):
         return 15 if tuple(set(dice)) == (1, 2, 3, 4, 5) else Yatzy.FAIL
 
     @staticmethod
-    def largeStraight(*dice):
+    def large_straight(*dice):
         return 20 if tuple(set(dice)) == (2, 3, 4, 5, 6) else Yatzy.FAIL
   
     @staticmethod
-    def fullHouse(*dice):
+    def full_house(*dice):
         return sum(dice.count(die) * die for die in set(dice) if (dice.count(die) == 2 or dice.count(die) == 3) and len(set(dice)) == 2)
