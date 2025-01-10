@@ -4,6 +4,17 @@ def sum_number(dice, number):
 
 class Yatzy:
 
+    FAIL = 0
+    MAX_POINTS = 50
+
+    def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
+        self.dice = [0] * 5
+        self.dice[0] = d1
+        self.dice[1] = d2
+        self.dice[2] = d3
+        self.dice[3] = d4
+        self.dice[4] = _5
+
     @staticmethod
     def chance(*dice):
         return sum(dice)
@@ -14,7 +25,7 @@ class Yatzy:
 
     @staticmethod
     def yatzy(*dice):
-        return 50 if len(set(dice)) == 1 else 0
+        return Yatzy.MAX_POINTS if len(set(dice)) == 1 else Yatzy.FAIL
     '''
     Reduces la lista de dados eliminando las repeticiones de un mismo numero,
     y si la longitud despues de eso es uno entonces son los 5 dados iguales y te da 50 puntos si no 0
@@ -39,15 +50,6 @@ class Yatzy:
     '''
     Bucle para sumar unidad por cada resultado igual a 3
     '''  
-
-
-    def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
-        self.dice = [0] * 5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
 
     def fours(*dice):
         return sum_number(dice, 4)
@@ -85,17 +87,11 @@ class Yatzy:
         return sum(pairs_points) if len(pairs_points) == 2 else 0 
 
     @staticmethod
-    def four_of_a_kind(_1, _2, d3, d4, d5):
-        tallies = [0] * 6
-        tallies[_1 - 1] += 1
-        tallies[_2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-        for i in range(6):
-            if (tallies[i] >= 4):
-                return (i + 1) * 4
-        return 0
+    def four_of_a_kind(*dice):
+        for die in dice:
+            if dice.count(die) > 3:
+                return die * 4
+        return Yatzy.FAIL
 
     @staticmethod
     def three_of_a_kind(d1, d2, d3, d4, d5):
