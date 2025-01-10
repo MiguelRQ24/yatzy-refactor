@@ -78,21 +78,21 @@ def test_four_of_a_knd():
     assert 0 == Yatzy.four_of_a_kind(3, 3, 3, 2, 1)
 
 @pytest.mark.small_straight
-def test_smallStraight():
-    assert 15 == Yatzy.smallStraight(1, 2, 3, 4, 5)
-    assert 15 == Yatzy.smallStraight(2, 3, 4, 5, 1)
-    assert 0 == Yatzy().smallStraight(1, 2, 2, 4, 5)
+def test_small_straight():
+    assert 15 == Yatzy.small_straight(1, 2, 3, 4, 5)
+    assert 15 == Yatzy.small_straight(2, 3, 4, 5, 1)
+    assert 0 == Yatzy().small_straight(1, 2, 2, 4, 5)
 
 @pytest.mark.large_straight
-def test_largeStraight():
-    assert 20 == Yatzy.largeStraight(6, 2, 3, 4, 5)
-    assert 20 == Yatzy().largeStraight(2, 3, 4, 5, 6)
-    assert 0 == Yatzy.largeStraight(1, 2, 2, 4, 5)
+def test_large_straight():
+    assert 20 == Yatzy.large_straight(6, 2, 3, 4, 5)
+    assert 20 == Yatzy().large_straight(2, 3, 4, 5, 6)
+    assert 0 == Yatzy.large_straight(1, 2, 2, 4, 5)
 
 @pytest.mark.full_house
-def test_fullHouse():
-    assert 18 == Yatzy.fullHouse(6, 2, 2, 2, 6)
-    assert 0 == Yatzy.fullHouse(2, 3, 4, 5, 6)
-    assert 0 == Yatzy.fullHouse(2, 2, 3, 3, 4)
-    assert 0 == Yatzy.fullHouse(2, 2, 2, 2, 2)
-    assert 0 == Yatzy.fullHouse(3, 3, 3, 3, 1)
+def test_full_souse():
+    assert 18 == Yatzy.full_house(6, 2, 2, 2, 6)
+    assert 0 == Yatzy.full_house(2, 3, 4, 5, 6)
+    assert 0 == Yatzy.full_house(2, 2, 3, 3, 4)
+    assert 0 == Yatzy.full_house(2, 2, 2, 2, 2)
+    assert 0 == Yatzy.full_house(3, 3, 3, 3, 1)
