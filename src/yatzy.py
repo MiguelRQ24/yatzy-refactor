@@ -67,22 +67,20 @@ class Yatzy:
     '''
 
     def score_pair(*dice):
-        pairs_points = [0]
-        for die in dice:
-            if dice.count(die) > 1:
-                pairs_points.append(die * 2)
-        return max(pairs_points)
+        return max(die * 2 if dice.count(die) > 1  else 0 for die in dice)
 
     @staticmethod
     def two_pair(*dice):
-        dice_uncounted = list(dice)
-        pairs_points = []
-        for die in dice:
-            if dice_uncounted.count(die) > 1:
-                pairs_points.append(die * 2)
-                dice_uncounted.remove(die)
-                dice_uncounted.remove(die)
-        return sum(pairs_points) if len(pairs_points) == 2 else 0 
+        """
+        Calculate the score for two pairs in a Yatzy game.
+
+        Args:
+            *dice: A variable number of integers representing the dice rolled.
+
+        Returns:
+            int: The sum of the two pairs if there are exactly two pairs, otherwise 0.
+        """
+        return sum(die * 2 for die in set(dice) if dice.count(die) >= 2 and (len(set(dice)) == 3 or len(set(dice)) == 2))
 
     @staticmethod
     def four_of_a_kind(*dice):
