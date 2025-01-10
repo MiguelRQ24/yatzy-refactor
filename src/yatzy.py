@@ -1,6 +1,4 @@
-
-def sum_number(dice, number):
-    return sum(number for die in dice if die == number)  
+from src.pips import Pips 
 
 class Yatzy:
 
@@ -14,7 +12,7 @@ class Yatzy:
         self.dice[2] = d3
         self.dice[3] = d4
         self.dice[4] = _5
-
+    
     @staticmethod
     def chance(*dice):
         return sum(dice)
@@ -32,38 +30,46 @@ class Yatzy:
     '''
 
     @staticmethod
-    def ones(*dice):
-        return sum_number(dice, 1)  
+    def __sum_one_number(dice: tuple, number):
+        return dice.count(number) * number 
+    
+    @classmethod
+    def ones(cls, *dice):
+        return cls.__sum_one_number(dice, Pips.ONE.value)  
     '''
     Bucle para sumar unidad por cada resultado igual a 1
     '''
-    @staticmethod
-    def twos(*dice):
-        return sum_number(dice, 2)
+    @classmethod
+    def twos(cls, *dice):
+        return cls.__sum_one_number(dice, Pips.TWO.value)
     '''
     Bucle para sumar unidad por cada resultado igual a 2
     '''  
 
-    @staticmethod
-    def threes(*dice):
-        return sum_number(dice, 3)
+    @classmethod
+    def threes(cls, *dice):
+        return cls.__sum_one_number(dice, Pips.THREE.value)
     '''
     Bucle para sumar unidad por cada resultado igual a 3
     '''  
 
-    def fours(*dice):
-        return sum_number(dice, 4)
+    @classmethod
+    def fours(cls, *dice):
+        return cls.__sum_one_number(dice, Pips.FOUR.value)
     '''
     Bucle para sumar unidad por cada resultado igual a 4
     '''  
-    def fives(*dice):
-        return sum_number(dice, 5)
+    
+    @classmethod
+    def fives(cls, *dice):
+        return cls.__sum_one_number(dice, Pips.FIVE.value)
     '''
     Bucle para sumar unidad por cada resultado igual a 5
     ''' 
 
-    def sixes(*dice):
-        return sum_number(dice, 6)
+    @classmethod
+    def sixes(cls, *dice):
+        return cls.__sum_one_number(dice, Pips.SIX.value)
     '''
     Bucle para sumar unidad por cada resultado igual a 6
     '''
@@ -101,20 +107,8 @@ class Yatzy:
         return Yatzy.FAIL
 
     @staticmethod
-    def smallStraight(d1, d2, d3, d4, d5):
-        tallies = [0] * 6
-        tallies[d1 - 1] += 1
-        tallies[d2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-        if (tallies[0] == 1 and
-                tallies[1] == 1 and
-                tallies[2] == 1 and
-                tallies[3] == 1 and
-                tallies[4] == 1):
-            return 15
-        return 0
+    def smallStraight(*dice):
+        return 15 if tuple(set(dice)) == (1, 2, 3, 4, 5) else Yatzy.FAIL
 
     @staticmethod
     def largeStraight(d1, d2, d3, d4, d5):
