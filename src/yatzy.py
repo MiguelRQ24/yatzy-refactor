@@ -106,5 +106,5 @@ class Yatzy:
   
     @staticmethod
     def full_house(*dice):
-        return sum(dice.count(die) * die for die in set(dice) if (dice.count(die) == 2 or dice.count(die) == 3) and len(set(dice)) == 2)
+        return sum(dice.count(die) * die for die in set(dice) if (4 > dice.count(die) > 1) and len(set(dice)) == 2)
     
