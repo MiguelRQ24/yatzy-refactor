@@ -91,10 +91,7 @@ class Yatzy:
 
     @staticmethod
     def three_of_a_kind(*dice):
-        for die in dice:
-            if dice.count(die) > 2:
-                return die * 3
-        return Yatzy.FAIL
+        return sum(die * 3 for die in set(dice) if dice.count(die) > 2)
 
     @staticmethod
     def small_straight(*dice):
