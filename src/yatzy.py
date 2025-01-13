@@ -84,10 +84,7 @@ class Yatzy:
 
     @staticmethod
     def four_of_a_kind(*dice):
-        for die in dice:
-            if dice.count(die) > 3:
-                return die * 4
-        return Yatzy.FAIL
+        return sum(die * 4 for die in set(dice) if dice.count(die) > 3)
 
     @staticmethod
     def three_of_a_kind(*dice):
