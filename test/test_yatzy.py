@@ -96,4 +96,5 @@ def test_full_souse():
     assert 0 == Yatzy.full_house(2, 2, 3, 3, 4)
     assert 0 == Yatzy.full_house(2, 2, 2, 2, 2)
     assert 0 == Yatzy.full_house(3, 3, 3, 3, 1)
+    assert 0 == Yatzy.full_house(1, 3, 3, 3, 3)
     
