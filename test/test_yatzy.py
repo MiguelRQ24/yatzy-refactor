@@ -62,6 +62,8 @@ def test_two_pair():
     assert 16 == Yatzy.two_pair(3, 3, 5, 4, 5)
     assert 18 == Yatzy.two_pair(3, 3, 6, 6, 6)
     assert 0 == Yatzy.two_pair(3, 3, 6, 5, 4)
+    assert 16 == Yatzy.two_pair(4, 4, 4, 4, 4)
+    assert 0 == Yatzy.two_pair(3, 3, 3, 1, 2)
 
 @pytest.mark.three_of_a_kind
 def test_three_of_a_kind():
@@ -97,4 +99,9 @@ def test_full_souse():
     assert 0 == Yatzy.full_house(2, 2, 2, 2, 2)
     assert 0 == Yatzy.full_house(3, 3, 3, 3, 1)
     assert 0 == Yatzy.full_house(1, 3, 3, 3, 3)
-    
+    assert 0 == Yatzy.full_house(4, 4, 4, 1, 2)
+    assert 0 == Yatzy.full_house(4, 4, 1, 2, 2)
+    assert 0 == Yatzy.full_house(4, 1, 2, 2, 2)
+    assert 16 == Yatzy.full_house(5, 5, 2, 2, 2)
+    assert 0 == Yatzy.full_house(5, 2, 2, 2, 2)
+    assert 13 == Yatzy.full_house(5, 5, 1, 1, 1)
