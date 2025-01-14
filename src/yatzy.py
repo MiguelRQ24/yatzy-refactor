@@ -4,8 +4,8 @@ class Yatzy:
 
     FAIL = 0
     MAX_POINTS = 50
-    SMALL_STRAIGHT = (1, 2, 3, 4, 5)
-    LARGE_STRAIGHT = (2, 3, 4, 5, 6)
+    SMALL_STRAIGHT_NUMBERS = (1, 2, 3, 4, 5)
+    LARGE_STRAIGHT_NUMBERS = (2, 3, 4, 5, 6)
 
     @staticmethod
     def chance(*dice):
@@ -73,17 +73,15 @@ class Yatzy:
 
     @staticmethod
     def two_pair(*dice):
-        """
-        Calculate the score for two pairs in a Yatzy game.
-
-        Args:
-            *dice: A variable number of integers representing the dice rolled.
-
-        Returns:
-            int: The sum of the two pairs if there are exactly two pairs, otherwise 0.
-        """
-        return sum(die * 2 for die in set(dice) if dice.count(die) >= 2 and (len(set(dice)) == 3 or len(set(dice)) == 2))
-
+        pairs = [die for die in set(dice) if dice.count(die) > 1 ]
+        
+        if len(pairs) == 1 and dice.count(pairs[0]) >= 4:
+            return sum(pairs * 4)
+        else :
+            if len(pairs) == 2:
+                return sum(pairs * 2)
+            return Yatzy.FAIL
+        
     @staticmethod
     def four_of_a_kind(*dice):
         return sum(die * 4 for die in set(dice) if dice.count(die) > 3)
@@ -94,11 +92,11 @@ class Yatzy:
 
     @staticmethod
     def small_straight(*dice):
-        return 15 if tuple(set(dice)) == Yatzy.SMALL_STRAIGHT else Yatzy.FAIL
+        return 15 if tuple(set(dice)) == Yatzy.SMALL_STRAIGHT_NUMBERS else Yatzy.FAIL
 
     @staticmethod
     def large_straight(*dice):
-        return 20 if tuple(set(dice)) == Yatzy.LARGE_STRAIGHT else Yatzy.FAIL
+        return 20 if tuple(set(dice)) == Yatzy.LARGE_STRAIGHT_NUMBERS else Yatzy.FAIL
   
     @staticmethod
     def full_house(*dice):
