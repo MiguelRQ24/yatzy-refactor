@@ -73,14 +73,8 @@ class Yatzy:
 
     @staticmethod
     def two_pair(*dice):
-        pairs = [die for die in set(dice) if dice.count(die) > 1 ]
-        
-        if len(pairs) == 1 and dice.count(pairs[0]) >= 4:
-            return sum(pairs * 4)
-        else :
-            if len(pairs) == 2:
-                return sum(pairs * 2)
-            return Yatzy.FAIL
+        pairs = [die * 2 for die in set(dice) if dice.count(die) >= 2 and 3 >= len(set(dice)) >= 2]
+        return sum(pairs) if len(pairs) == 2 else Yatzy.FAIL
         
     @staticmethod
     def four_of_a_kind(*dice):

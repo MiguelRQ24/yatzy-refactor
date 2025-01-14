@@ -57,20 +57,24 @@ def test_one_pair():
     assert 10 == Yatzy.score_pair(5, 3, 3, 3, 5)
     assert 12 == Yatzy.score_pair(5, 3, 6, 6, 5)
     assert 0 == Yatzy.score_pair(1, 2, 4, 6, 5)
+    assert 2 == Yatzy.score_pair(1, 1, 1, 1, 1)
+
 @pytest.mark.two_pair
 def test_two_pair():
     assert 16 == Yatzy.two_pair(3, 3, 5, 4, 5)
     assert 18 == Yatzy.two_pair(3, 3, 6, 6, 6)
     assert 0 == Yatzy.two_pair(3, 3, 6, 5, 4)
-    assert 16 == Yatzy.two_pair(4, 4, 4, 4, 4)
+    assert 0 == Yatzy.two_pair(4, 4, 4, 4, 4)
     assert 0 == Yatzy.two_pair(3, 3, 3, 1, 2)
+    assert 14 == Yatzy.two_pair(5, 5, 5, 2, 2)
 
 @pytest.mark.three_of_a_kind
 def test_three_of_a_kind():
-    assert 9 == Yatzy().three_of_a_kind(3, 3, 3, 4, 5)
-    assert 15 == Yatzy().three_of_a_kind(5, 3, 5, 4, 5)
+    assert 9 == Yatzy.three_of_a_kind(3, 3, 3, 4, 5)
+    assert 15 == Yatzy.three_of_a_kind(5, 3, 5, 4, 5)
     assert 9 == Yatzy.three_of_a_kind(3, 3, 3, 3, 5)
     assert 0 == Yatzy.three_of_a_kind(3, 4, 2, 3, 5)
+    assert 12 == Yatzy.three_of_a_kind(4, 4, 4, 4, 4)
 
 @pytest.mark.four_of_a_kind
 def test_four_of_a_knd():
@@ -105,3 +109,4 @@ def test_full_souse():
     assert 16 == Yatzy.full_house(5, 5, 2, 2, 2)
     assert 0 == Yatzy.full_house(5, 2, 2, 2, 2)
     assert 13 == Yatzy.full_house(5, 5, 1, 1, 1)
+    assert 0 == Yatzy.full_house(1, 1, 1, 1, 1)
