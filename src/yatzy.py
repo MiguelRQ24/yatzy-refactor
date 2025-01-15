@@ -4,8 +4,8 @@ class Yatzy:
 
     FAIL = 0
     MAX_POINTS = 50
-    SMALL_STRAIGHT_NUMBERS = (1, 2, 3, 4, 5)
-    LARGE_STRAIGHT_NUMBERS = (2, 3, 4, 5, 6)
+    SMALL_STRAIGHT_NUMBERS = {1, 2, 3, 4, 5}
+    LARGE_STRAIGHT_NUMBERS = {2, 3, 4, 5, 6}
 
     @staticmethod
     def chance(*dice):
@@ -86,11 +86,11 @@ class Yatzy:
 
     @staticmethod
     def small_straight(*dice):
-        return 15 if tuple(set(dice)) == Yatzy.SMALL_STRAIGHT_NUMBERS else Yatzy.FAIL
+        return 15 if set(dice) == Yatzy.SMALL_STRAIGHT_NUMBERS else Yatzy.FAIL
 
     @staticmethod
     def large_straight(*dice):
-        return 20 if tuple(set(dice)) == Yatzy.LARGE_STRAIGHT_NUMBERS else Yatzy.FAIL
+        return 20 if set(dice) == Yatzy.LARGE_STRAIGHT_NUMBERS else Yatzy.FAIL
   
     @staticmethod
     def full_house(*dice):
