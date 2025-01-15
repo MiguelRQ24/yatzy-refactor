@@ -14,6 +14,7 @@ class Pips(Enum):
     def values(*numbers_to_exlude):
         """
         Returns a set of Pips values excluding the specified numbers.
+        
         Args:
             *numbers: Variable length argument list of numbers to exclude.
         Returns:
