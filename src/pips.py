@@ -10,3 +10,11 @@ class Pips(Enum):
     FIVE = 5
     SIX = 6
 
+    @staticmethod
+    def values():
+        return {number._value_ for number in Pips.__members__.values()}
+
+if __name__ == "__main__":
+    print(Pips.values())
+    print(dir(Pips))
+    print(list(Pips))
