@@ -11,9 +11,14 @@ class Pips(Enum):
     SIX = 6
 
     @staticmethod
-    def values():
-        return {number._value_ for number in Pips.__members__.values()}
+    def values(*numbers):
+        return {number._value_ for number in Pips.__members__.values()} - set(numbers)
 
+    '''
+    @classmethod
+    def remove_from_values(cls, *numbers):
+        return cls.values() - set(numbers)
+    '''
 if __name__ == "__main__":
     print(Pips.values())
     print(dir(Pips))
