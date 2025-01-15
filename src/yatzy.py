@@ -4,8 +4,8 @@ class Yatzy:
 
     FAIL = 0
     MAX_POINTS = 50
-    SMALL_STRAIGHT_NUMBERS = {1, 2, 3, 4, 5}
-    LARGE_STRAIGHT_NUMBERS = {2, 3, 4, 5, 6}
+    SMALL_STRAIGHT_NUMBERS = Pips.values() - {6}
+    LARGE_STRAIGHT_NUMBERS = Pips.values() - {1}
 
     @staticmethod
     def chance(*dice):
