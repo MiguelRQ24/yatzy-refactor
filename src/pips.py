@@ -11,8 +11,16 @@ class Pips(Enum):
     SIX = 6
 
     @staticmethod
-    def values(*numbers):
-        return {number._value_ for number in Pips.__members__.values()} - set(numbers)
+    def values(*numbers_to_exlude):
+        """
+        Returns a set of Pips values excluding the specified numbers.
+        Args:
+            *numbers: Variable length argument list of numbers to exclude.
+        Returns:
+            set: A set of Pips values excluding the specified numbers.
+        """
+
+        return {number._value_ for number in Pips.__members__.values()} - set(numbers_to_exlude)
 
     '''
     @classmethod
