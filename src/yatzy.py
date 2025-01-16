@@ -73,7 +73,7 @@ class Yatzy:
 
     @staticmethod
     def two_pair(*dice):
-        pairs = [die * 2 for die in set(dice) if dice.count(die) >= 2 and 3 >= len(set(dice)) >= 2]
+        pairs = [die * 2 for die in set(dice) if dice.count(die) >= 2]
         return sum(pairs) if len(pairs) == 2 else Yatzy.FAIL
         
     @staticmethod
