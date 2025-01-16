@@ -4,7 +4,9 @@ class Yatzy:
 
     FAIL = 0
     MAX_POINTS = 50
-    
+    SMALL_STRAIGHT_NUMBERS = Pips.values(6)
+    LARGE_STRAIGHT_NUMBERS = Pips.values(1)
+
     @staticmethod
     def chance(*dice):
         return sum(dice)
@@ -67,46 +69,30 @@ class Yatzy:
     '''
 
     def score_pair(*dice):
-        pairs_points = [0]
-        for die in dice:
-            if dice.count(die) > 1:
-                pairs_points.append(die * 2)
-        return max(pairs_points)
+        return max(die * 2 if dice.count(die) > 1  else 0 for die in dice)
 
     @staticmethod
     def two_pair(*dice):
-        dice_uncounted = list(dice)
-        pairs_points = []
-        for die in dice:
-            if dice_uncounted.count(die) > 1:
-                pairs_points.append(die * 2)
-                dice_uncounted.remove(die)
-                dice_uncounted.remove(die)
-        return sum(pairs_points) if len(pairs_points) == 2 else 0 
-
+        pairs = [die * 2 for die in set(dice) if dice.count(die) >= 2]
+        return sum(pairs) if len(pairs) == 2 else Yatzy.FAIL
+        
     @staticmethod
     def four_of_a_kind(*dice):
-        for die in dice:
-            if dice.count(die) > 3:
-                return die * 4
-        return Yatzy.FAIL
+        return sum(die * 4 for die in set(dice) if dice.count(die) > 3)
 
     @staticmethod
     def three_of_a_kind(*dice):
-        for die in dice:
-            if dice.count(die) > 2:
-                return die * 3
-        return Yatzy.FAIL
+        return sum(die * 3 for die in set(dice) if dice.count(die) > 2)
 
     @staticmethod
     def small_straight(*dice):
-        return 15 if tuple(set(dice)) == (1, 2, 3, 4, 5) else Yatzy.FAIL
+        return 15 if set(dice) == Yatzy.SMALL_STRAIGHT_NUMBERS else Yatzy.FAIL
 
     @staticmethod
     def large_straight(*dice):
-        return 20 if tuple(set(dice)) == (2, 3, 4, 5, 6) else Yatzy.FAIL
+        return 20 if set(dice) == Yatzy.LARGE_STRAIGHT_NUMBERS else Yatzy.FAIL
   
     @staticmethod
     def full_house(*dice):
-        return sum(dice.count(die) * die for die in set(dice) if (dice.count(die) == 2 or dice.count(die) == 3) and len(set(dice)) == 2)
+        return sum(dice.count(die) * die for die in set(dice) if (4 > dice.count(die) > 1) and len(set(dice)) == 2)
     
