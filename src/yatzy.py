@@ -5,7 +5,9 @@ class Yatzy:
     FAIL = 0
     MAX_POINTS = 50
     SMALL_STRAIGHT_NUMBERS = Pips.values(6)
+    SMALL_STRAIGHT_POINTS = 15
     LARGE_STRAIGHT_NUMBERS = Pips.values(1)
+    LARGE_STRAIGHT_POINTS = 20
 
     @staticmethod
     def chance(*dice):
@@ -86,11 +88,11 @@ class Yatzy:
 
     @staticmethod
     def small_straight(*dice):
-        return 15 if set(dice) == Yatzy.SMALL_STRAIGHT_NUMBERS else Yatzy.FAIL
+        return Yatzy.SMALL_STRAIGHT_POINTS if set(dice) == Yatzy.SMALL_STRAIGHT_NUMBERS else Yatzy.FAIL
 
     @staticmethod
     def large_straight(*dice):
-        return 20 if set(dice) == Yatzy.LARGE_STRAIGHT_NUMBERS else Yatzy.FAIL
+        return Yatzy.LARGE_STRAIGHT_POINTS if set(dice) == Yatzy.LARGE_STRAIGHT_NUMBERS else Yatzy.FAIL
   
     @staticmethod
     def full_house(*dice):
