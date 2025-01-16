@@ -16,7 +16,7 @@ class Pips(Enum):
         Returns a set of Pips values excluding the specified numbers.
         
         Args:
-            *numbers: Variable length argument list of numbers to exclude.
+            *numbers_to_exclude: Variable length argument list of numbers to exclude.
         Returns:
             set: A set of Pips values excluding the specified numbers.
         """
